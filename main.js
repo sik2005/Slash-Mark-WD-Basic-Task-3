@@ -11,13 +11,23 @@ document.getElementById('detect-location').addEventListener('click', function() 
 });
 
 function getWeatherData(location) {
-    fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${location}&appid=${API_KEY}&units=metric`)
-        .then(response => response.json())
+    const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${location}&appid=${API_KEY}&units=metric`;
+    console.log('Fetching weather data from:', apiUrl);
+
+    fetch(apiUrl)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
         .then(data => {
+            console.log('Weather data received:', data);
             displayWeather(data);
         })
         .catch(error => {
-            document.getElementById('weather-result').innerHTML = `<p>Could not retrieve weather data</p>`;
+            console.error('Error fetching weather data:', error);
+            document.getElementById('weather-result').innerHTML = `<p>Could not retrieve weather data: ${error.message}</p>`;
         });
 }
 
@@ -32,7 +42,7 @@ function displayWeather(data) {
     const todayData = data.list.find(item => new Date(item.dt_txt).getDate() === new Date().getDate());
 
     if (todayData) {
-        const todayIcon = `http://openweathermap.org/img/wn/${todayData.weather[0].icon}.png`;
+        const todayIcon = `https://openweathermap.org/img/wn/${todayData.weather[0].icon}.png`;
         const todayWeather = `
             <div class="weather-today">
                 <h3>Today's Weather</h3>
@@ -50,7 +60,7 @@ function displayWeather(data) {
 
     let row = '';
     filteredData.forEach((item, index) => {
-        const weatherIcon = `http://openweathermap.org/img/wn/${item.weather[0].icon}.png`;
+        const weatherIcon = `https://openweathermap.org/img/wn/${item.weather[0].icon}.png`;
 
         const container = `
             <div class="weather-item" onclick="navigateToDetails('${item.dt_txt.split(' ')[0]}')">
@@ -83,8 +93,13 @@ function detectLocation() {
             const latitude = position.coords.latitude;
             const longitude = position.coords.longitude;
 
-            fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric`)
-                .then(response => response.json())
+            fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
                 .then(data => {
                     const location = data.name;
                     document.getElementById('location').value = location;
