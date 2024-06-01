@@ -3,9 +3,9 @@
     --second-bg-color: #131313;
     --text-color: rgb(255, 255, 255);
     --main-color: #00ffee;
-  }
-  
-  body {
+}
+
+body {
     font-family: Arial, sans-serif;
     background-color: var(--bg-color);
     color: var(--text-color);
@@ -15,37 +15,36 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-  }
-  
-  .container {
+}
+
+.container {
     background: var(--second-bg-color);
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 10px var(--main-color); /* Updated box-shadow */
+    box-shadow: 0 0 10px var(--main-color);
     width: 100%;
     max-width: 800px;
     text-align: center;
-  }
-  
-  h1 {
+}
+
+h1 {
     margin-bottom: 20px;
     color: var(--main-color);
-    text-align: center;
-  }
-  
-  form {
+}
+
+form {
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
-  }
-  
-  .input-group {
+}
+
+.input-group {
     display: flex;
     width: 100%;
     max-width: 600px;
-  }
-  
-  input {
+}
+
+input {
     padding: 10px;
     font-size: 16px;
     flex: 1;
@@ -54,9 +53,9 @@
     border-bottom-left-radius: 4px;
     border-right: none;
     outline: none;
-  }
-  
-  button {
+}
+
+button {
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
@@ -66,54 +65,56 @@
     border-top-right-radius: 4px;
     border-bottom-right-radius: 4px;
     outline: none;
-  }
-  
-  button:hover {
+}
+
+button:hover {
     background-color: #00bbaa;
-  }
-  
-  #weather-result {
+}
+
+#weather-result {
     margin-top: 20px;
     display: flex;
     flex-direction: column;
     gap: 10px;
-  }
-  
-  .weather-row {
+}
+
+.weather-row {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
     gap: 10px;
-  }
-  
-  .weather-item {
+}
+
+.weather-item {
     background: #1c1c1c;
     padding: 10px;
     border-radius: 4px;
     box-shadow: 0 0 10px var(--main-color);
     text-align: center;
-    flex: 1;
+    flex: 1 1 calc(33.333% - 20px);
     max-width: 150px;
-  }
-  
-  .weather-item img {
+    margin: 10px;
+}
+
+.weather-item img {
     width: 50px;
     height: 50px;
-  }
-  
-  .weather-item p {
+}
+
+.weather-item p {
     margin: 5px 0;
-  }
-  
-  .weather-today {
+}
+
+.weather-today {
     background: #1c1c1c;
     padding: 20px;
     border-radius: 4px;
     box-shadow: 0 0 10px var(--main-color);
     text-align: center;
     margin-bottom: 20px;
-  }
-  
-  .weather-more-details {
+}
+
+.weather-more-details {
     background: #1c1c1c;
     padding: 20px;
     border-radius: 4px;
@@ -123,19 +124,55 @@
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-  }
-  
-  .weather-detail {
+}
+
+.weather-detail {
     flex: 1 1 200px;
     margin: 10px;
     padding: 10px;
     background: #262626;
     border-radius: 4px;
     text-align: left;
-  }
-  
-  canvas {
+}
+
+canvas {
     width: 100%;
     max-width: 600px;
-  }
-  
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .weather-item {
+        flex: 1 1 calc(50% - 20px);
+    }
+}
+
+@media (max-width: 480px) {
+    .weather-item {
+        flex: 1 1 calc(100% - 20px);
+    }
+
+    form {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .input-group {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    input {
+        border-radius: 4px;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+        margin-bottom: 10px;
+        border-right: 1px solid #ccc;
+    }
+
+    button {
+        border-radius: 4px;
+        border-top-right-radius: 0;
+        border-top-left-radius: 0;
+    }
+}
