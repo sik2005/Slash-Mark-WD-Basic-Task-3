@@ -37,12 +37,14 @@ form {
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
+    flex-wrap: wrap; /* Allow wrapping for mobile view */
 }
 
 .input-group {
     display: flex;
     width: 100%;
     max-width: 600px;
+    flex-wrap: wrap; /* Allow wrapping for mobile view */
 }
 
 input {
@@ -174,6 +176,20 @@ canvas {
     .weather-detail {
         max-width: 100%;
         margin-bottom: 20px;
+    }
+
+    .weather-today {
+        order: -1; /* Ensure "Today's Weather" appears first */
+        width: 100%;
+    }
+    
+    form {
+        flex-direction: column; /* Ensure form elements stack vertically */
+    }
+
+    .detect-location-btn {
+        width: 100%;
+        margin-top: 10px;
     }
 }
 
