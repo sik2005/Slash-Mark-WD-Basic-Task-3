@@ -46,7 +46,7 @@ function displayWeather(data) {
         const todayWeather = `
             <div class="weather-today">
                 <h3>Today's Weather</h3>
-                <p><strong>${new Date(todayData.dt_txt).toLocaleDateString()}</strong></p>
+                <p><strong>${formatDate(new Date(todayData.dt_txt))}</strong></p>
                 <img src="${todayIcon}" alt="${todayData.weather[0].description}">
                 <p>Temperature: ${todayData.main.temp} °C</p>
                 <p>Weather: ${todayData.weather[0].description}</p>
@@ -64,7 +64,7 @@ function displayWeather(data) {
 
         const container = `
             <div class="weather-item" onclick="navigateToDetails('${item.dt_txt.split(' ')[0]}')">
-                <p><strong>${new Date(item.dt_txt).toLocaleDateString()}</strong></p>
+                <p><strong>${formatDate(new Date(item.dt_txt))}</strong></p>
                 <img src="${weatherIcon}" alt="${item.weather[0].description}">
                 <p>Temperature: ${item.main.temp} °C</p>
                 <p>Weather: ${item.weather[0].description}</p>
@@ -112,4 +112,11 @@ function detectLocation() {
     } else {
         console.log('Geolocation is not supported by this browser.');
     }
+}
+
+function formatDate(date) {
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = date.getFullYear();
+    return `${day}-${month}-${year}`;
 }
