@@ -25,6 +25,7 @@ body {
     width: 100%;
     max-width: 800px;
     text-align: center;
+    overflow-y: auto; /* Added for scrolling on mobile */
 }
 
 h1 {
