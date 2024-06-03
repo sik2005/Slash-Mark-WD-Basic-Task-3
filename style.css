@@ -121,16 +121,7 @@ button:hover {
   text-align: center;
   margin-bottom: 20px;
 }
-@media (max-width: 768px) {
-  .weather-today {
-    order: -1;
-    width: calc(100% - 40px); /* Adjust the width to your preference */
-    margin-bottom: 10px; /* Adjust the margin bottom as needed */
-    margin-top: 0; /* Adjust the margin top as needed */
-    border-radius: 8px; /* Increase the border radius for better appearance */
-    box-shadow: 0 0 10px var(--main-color);
-  }
-}
+
 .weather-more-details {
   background: #1c1c1c;
   padding: 20px;
@@ -195,26 +186,36 @@ canvas {
 
   .weather-today {
       order: -1; /* Ensure "Today's Weather" appears first */
-      width: 100%;
+      width: calc(100% - 40px); /* Adjust the width to your preference */
+      margin-bottom: 10px; /* Adjust the margin bottom as needed */
+      margin-top: 0; /* Adjust the margin top as needed */
+      border-radius: 8px; /* Increase the border radius for better appearance */
+      box-shadow: 0 0 10px var(--main-color);
   }
-  
-  form {
-      flex-direction: column
-  /* Ensure form elements stack vertically */
-}
 
-.detect-location-btn {
-    width: 100%;
-    margin-top: 10px;
-}
+  form {
+      flex-direction: column; /* Ensure form elements stack vertically */
+  }
+
+  .detect-location-btn {
+      width: 100%;
+      margin-top: 10px;
+  }
 }
 
 @media (max-width: 480px) {
-.weather-item {
-    max-width: 100%;
-}
+  .weather-item {
+      max-width: 100%;
+  }
 
-.weather-detail {
-    max-width: 100%;
-}
+  .weather-detail {
+      max-width: 100%;
+  }
+
+  .weather-today {
+      width: calc(100% - 20px); /* Ensure it takes full width with some padding */
+      margin: 10px;
+      border-radius: 8px; /* Increase the border radius for better appearance */
+      box-shadow: 0 0 10px var(--main-color);
+  }
 }
