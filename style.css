@@ -80,7 +80,7 @@ button:hover {
   background-color: #00bbaa;
 }
 
-#weather-result {
+.weather-result {
   margin-top: 20px;
   display: flex;
   flex-direction: column;
@@ -151,70 +151,61 @@ canvas {
 /* Responsive Design */
 @media (max-width: 768px) {
   .input-group {
-    flex-direction: column;
-    align-items: stretch;
+      flex-direction: column;
+      align-items: stretch;
   }
 
   input {
-    border-radius: 4px;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
-    margin-bottom: 10px;
-    border-right: 1px solid #ccc;
+      border-radius: 4px;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+      margin-bottom: 10px;
+      border-right: 1px solid #ccc;
   }
 
   button {
-    border-radius: 4px;
-    border-top-right-radius: 0;
-    border-top-left-radius: 0;
+      border-radius: 4px;
+      border-top-right-radius: 0;
+      border-top-left-radius: 0;
   }
 
   .weather-row {
-    flex-direction: column;
-    align-items: center;
+      flex-direction: column;
+      align-items: center;
   }
 
   .weather-item {
-    max-width: 100%;
-    margin-bottom: 20px;
+      max-width: 100%;
+      margin-bottom: 20px;
   }
 
   .weather-detail {
-    max-width: 100%;
-    margin-bottom: 20px;
+      max-width: 100%;
+      margin-bottom: 20px;
   }
-/* Add this at the end of your CSS file */
-
-/* Mobile View */
-@media (max-width: 480px) {
-  .weather-detail {
-    flex-basis: 100%; /* Make the detail item full width */
-    margin: 10px 0; /* Adjust margin for better spacing */
-  }
-}
 
   .weather-today {
-    order: -1; /* Ensure "Today's Weather" appears first */
-    width: 100%;
+      order: -1; /* Ensure "Today's Weather" appears first */
+      width: 100%;
   }
-
+  
   form {
-    flex-direction: column;
-    /* Ensure form elements stack vertically */
-  }
+      flex-direction: column
+  /* Ensure form elements stack vertically */
+}
 
-  .detect-location-btn {
+.detect-location-btn {
     width: 100%;
     margin-top: 10px;
-  }
+}
 }
 
 @media (max-width: 480px) {
-  .weather-item {
+.weather-item {
     max-width: 100%;
-  }
+}
 
-  .weather-detail {
+.weather-detail {
     max-width: 100%;
-  }
+}
 }
