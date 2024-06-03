@@ -39,8 +39,10 @@ function displayWeather(data) {
     }
 
     let output = `<h2>Weather Forecast for ${data.city.name}</h2>`;
-    const todayData = data.list.find(item => new Date(item.dt_txt).getDate() === new Date().getDate());
+    
+    const today = new Date().toISOString().slice(0, 10); // Get today's date in YYYY-MM-DD format
 
+    const todayData = data.list.find(item => item.dt_txt.includes(today));
     if (todayData) {
         const todayIcon = `https://openweathermap.org/img/wn/${todayData.weather[0].icon}.png`;
         const todayWeather = `
